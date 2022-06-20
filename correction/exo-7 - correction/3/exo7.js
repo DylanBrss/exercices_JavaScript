@@ -8,7 +8,7 @@ var myTable={
 	show:"Spectacle"
 }
 jsonDatas.forEach(function(element) {
-	//Penser à utiliser une autre variable pour avoir toujours accès à element.type plsu tard
+	//Penser à utiliser une autre variable pour avoir toujours accès à element.type plus tard
 	element.displayType=myTable[element.type];
 	console.log(element);
 });

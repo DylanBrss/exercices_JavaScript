@@ -9,5 +9,65 @@
 		<div class="container">
 			<h1>Exercice 7</h1>
 		</div>
+		<div>
+			<div class="form-group">
+				<label for="empty">Rupture de stock</label>
+				<input type="checkbox" id="empty" checked />
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="type">Type d'article</label>
+				<input id="type" value="videoGame" type="text"/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="sort-by">Trier par </label>
+				<select id="sort-by">
+					<option value="default" selected></option>
+					<option value="name">Nom</option>
+					<option value="price">Prix</option>
+				</select>
+				<label for="order">dans l'ordre</label>
+				<select id="order">
+					<option value="asc">ASC</option>
+					<option value="desc">DESC</option>
+				</select>
+			</div>
+			<br>
+			<button onclick="SeeItems()" type="button">Afficher</button>
+		</div>
+
+		<br>
+		<hr>
+		<br>
+		
+		<form id="add-item-form">
+			<div class="form-group">
+				<label for="form-add-name">Name</label>
+				<input id="form-add-name" name="name" type="text"/>
+			</div>
+			<br/>
+			<div class="form-group">
+				<label for="form-add-description">Description</label>
+				<input id="form-add-description" name="description" type="textarea"/>
+			</div>
+			<br/>
+			<div class="form-group">
+				<label for="form-add-type">Type</label>
+				<input id="form-add-type" name="type" type="text"/>
+			</div>
+			<br/>
+			<div class="form-group">
+				<label for="form-add-price">Price</label>
+				<input id="form-add-price" name="price" type="number"/>
+			</div>
+			<br/>
+			<div class="form-group">
+				<label for="form-add-quantity">Quantity</label>
+				<input id="form-add-quantity" name="quantity"  type="number"/>
+			</div>
+			<br/>
+		</form>
+		<button type="button" onClick="addform()">Add</button>
 	</body>
 </html>
