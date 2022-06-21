@@ -66,7 +66,6 @@ Array.prototype.keySort = function(key, desc){
 /* ===== Formulaire ===== */
 
 //Ajouter un formulaire simple permettant d'ajouter un objet à la liste d'objets.
-
 function addform(){
     var elements = document.getElementById('add-item-form').elements; //recupere les elements du formulaire
     //var formData = new FormData(document.getElementById('add-item-form'));

@@ -18,75 +18,104 @@ joeInfo.bathrooms = 1;
 joeInfo.garage = true;
 
 var team = {
-    _player: {
+    _players: [{
         firstName: "Pablo",
         lastName: "Sanchez",
         age: 11,
-    },
-    _games: {
+    }],
+    _games: [{
         opponent: "Broncos",
         teamPoints: 42,
         opponentPoints: 27,
-    },
+    }],
 };
 
 //Créer une fonction addplayer qui prends trois arguments : first, last, et age et ajoute à l'objet team un joueur.
-function addplayer(first, last, age) {
+function addPlayer(first, last, age) {
 
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
+    var player = {};
+    player.firstName = first;
+    player.lastName = last;
+    player.age = age;
+    team._players.push(player);
+    return player;
 }
 
-//Appel de la méthode
-team._player = new addplayer("Lionel", "Messi", 36);
-team._player = new addplayer("Marco", "Reus", 34);
-team._player = new addplayer("Karim", "Benzema", 30);
-team._player = new addplayer("Kinsley", "Coman", 26);
+//Appel de la méthode pour ajouter les données
+var newPlayer1 = new addPlayer('Antoine','Griezmann',31);
+var newPlayer2 = new addPlayer('Kinsley','Coman',33);
+var newPlayer3 = new addPlayer('Marco','Reus',31);
+var newPlayer4 = new addPlayer('Lionel','Messi',35);
+var newPlayer5 = new addPlayer('Critiano','Ronaldo',37)
 
-console.log(team._player);
+console.log(team._players);
 
 //Créer une fonction addmatch qui prends trois arguments : opponent, teamPoints, et OpponentPoints et ajoute à l'objet games une partie.
-function addmatch(opponent, teamPoints, opponentPoints) {
+function addMatch(opponent, teamPoints, opponentPoints) {
 
-    this.opponent = opponent;
-    this.teamPoints = teamPoints;
-    this.opponentPoints = opponentPoints;
+    var games = {};
+    games.opponent = opponent;
+    games.teamPoints = teamPoints;
+    games.opponentPoints = opponentPoints;
+    team._games.push(games);
+    return games
 }
 
 //Appel de la méthode
-team._games = new addmatch('Real Madrid', 35, 21);
-team._games = new addmatch('FC Barcelone', 42, 14);
-team._games = new addmatch('Borussia Dortmund', 51, 32);
-team._games = new addmatch('Fc Bayern Munich', 28, 10);
+var newGames1 = new addMatch('Real Madrid', 35, 21);
+var newGames2 = new addMatch('Borussia Dortmund', 28, 10);
+var newGames3 = new addMatch('FC Bayern Munich', 51, 32);
+var newGames4 = new addMatch('Olympique de Marseille', 42, 14);
+var newGames5 = new addMatch('Manchester City',10, 41)
 
 console.log(team._games);
+console.log(team);
 
 // Calculer la somme des points de votre équipe sur tous les matchs joués
-team._games.teamPoints += team._games.teamPoints;
+var totalPoints = 0;
+var totalOpponentPoints = 0;
+
+//boucle somme point equipes
+for(var i=0; i<team._games.length; i++){
+    totalPoints = totalPoints + team._games[i].teamPoints;
+}
+
+//boucle somme point opponents
+for(var i=0; i<team._games.length; i++){
+    totalOpponentPoints = totalOpponentPoints + team._games[i].opponentPoints
+}
+
+//function retourne joueur le plus vieux
+function oldestPlayer(){
+	var agePlayer = 0;
+	for(var i=0; i<team._players.length;i++){
+		var newAgePlayer = team._players[i].age;
+			if(newAgePlayer > agePlayer){
+				agePlayer = newAgePlayer;
+		}
+	}
+	console.log("Le joueur le plus vieux à " + agePlayer + " ans");
+}
+
+//trier les joueur par ordre alphabétique
+function alphaPlayer(){
+	var namePlayers = [];
+	for(var i=0; i<team._players.length;i++){
+		var playerName = team._players[i].firstName;
+		namePlayers.push(playerName);
+		}
+	namePlayers.sort();
+	console.log(namePlayers);
+}
+
+
+console.log('La somme des points de votre équipe sur tous les matchs : ' + totalPoints);
 
 //Calculer la moyenne des points de l'équipe adverse sur tous les matchs.
-function ArrayAvg(opponentPoints) {
-    var i = 0, summ = 0, ArrayLen = opponentPoints.length;
-    while (i < ArrayLen) {
-        summ = summ + opponentPoints[i++];
-}
-    return summ / ArrayLen;
-}
+console.log("La moyenne des points de l'équipe adverse sur tous les matchs est de : " + totalOpponentPoints/team._games.length);
 
-//Appel de la fonction pour calculer la moyen des point de l'equipe adverse
-console.log(ArrayAvg(team._games.opponentPoints));
+//appel de la fonction de l'age du joueur le plus vieux
+oldestPlayer();
 
-
-function older() {
-    for(let i = 0; i < this.age.length; i++){
-        if(this.age[i] < this.age){
-            return this.age[i] = this.age;
-        }
-        
-    }
-}
-
-console.log(older());
-
-console.log(team._games.teamPoints)
+//appel de la fonction pour mettre dans l'odre alphabétique
+alphaPlayer();
