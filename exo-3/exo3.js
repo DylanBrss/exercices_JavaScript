@@ -1,13 +1,16 @@
 // you can write js here
 console.log('exo-3');
 
+var userInput = prompt('Quelle est ton chois?').toLowerCase();
+var list = ['paper','scissors','rock'];
+var userChoise = getUserChoice(userInput);
+var computerChoise = getComputerChoice();
 
 //fonction choix utilisateur
 function getUserChoice(userInput) {
-    this.userInput = userInput.toLowerCase();
 
     if (userInput == 'rock' || userInput == 'paper' || userInput == 'scissors' || userInput == 'bomb') {
-        return userInput
+        return 'L\'utilisateur a choisi : ' + userInput;
     } else {
         console.log('Error !!!!');
     }
@@ -15,37 +18,31 @@ function getUserChoice(userInput) {
 
 //fonction choix ordinateur avec random
 function getComputerChoice() {
-    var choiceCP = Math.floor(Math.random() * 2);
-
-    if (choiceCP == 0) {
-        return 'rock';
-    } else if (choiceCP == 1) {
-        return 'paper';
-    } else {
-        return 'scissors';
-    }
+    var ChoiseCP = list[Math.floor(Math.random() * 2)];
+	return 'L\'ordinateur a choisi : ' + ChoiseCP;
 }
 
 //fonction qui défini le gagnant suite au choix fait
-function determineWinner(userChoice, computerChoice) {
+function determineWinner(userChoise, computerChoise) {
 
-    if (userChoice === computerChoice) {
+    if (userChoise === computerChoise) {
         return 'Tied';
-    } else if (userChoice === 'rock' && computerChoice === 'scissors' || userChoice === 'paper' && computerChoice === 'rock' || userChoice === 'scissors' && computerChoice === 'paper') {
+    } else if (userChoise === 'paper' && computerChoise === 'rock') {
         return 'Won';
-    } else if (userChoice === 'rock' && computerChoice === 'paper' || userChoice === 'paper' && computerChoice === 'scissors' || userChoice === 'scissors' && computerChoice === 'rock') {
-        return 'Lost';
+    } else if (userChoise === 'rock' && computerChoise === 'scissors') {
+        return 'Won';
+    } else if (userChoise === 'scissors' && computerChoise === 'paper') {
+        return 'Won';
     } else {
-        return 'Won';
+        return 'Lost';
     }
 }
 
 //fonction qui lance le jeux
 function playGame() {
-    var uChoice = getUserChoice('scissors');
-    var cChoice = getComputerChoice();
-
-    console.log(determineWinner(uChoice, cChoice));
+    console.log(determineWinner(userChoise, computerChoise));
 }
 
+console.log(userChoise);
+console.log(computerChoise);
 playGame();
